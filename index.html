@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AION 2 daily and weekly task tracker with automatic reset at Global server time." />
+  <title>AION 2 — Flight Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <p class="brand-mark">AION 2</p>
+      <h1>Flight Log</h1>
+    </div>
+    <div class="resets" aria-live="polite">
+      <div class="reset-chip">
+        <span class="reset-label">Daily</span>
+        <strong id="daily-countdown">—</strong>
+      </div>
+      <div class="reset-chip">
+        <span class="reset-label">Weekly</span>
+        <strong id="weekly-countdown">—</strong>
+      </div>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#daily">Daily</a>
+    <a href="#weekly">Weekly</a>
+    <a href="#shops">Buy &amp; Craft</a>
+    <a href="#notes">Notes</a>
+  </nav>
+
+  <main>
+    <section id="daily" class="panel" data-period="daily">
+      <div class="panel-head">
+        <div>
+          <h2>Daily</h2>
+          <p class="panel-sub">Resets every day at 07:00 UTC</p>
+        </div>
+        <div class="progress" data-progress-for="daily">
+          <span class="progress-text">0 / 0</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+      </div>
+      <ul class="checklist" id="daily-list"></ul>
+      <form class="add-form" data-add="daily">
+        <input type="text" name="label" placeholder="Add a daily task…" maxlength="120" required />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section id="weekly" class="panel" data-period="weekly">
+      <div class="panel-head">
+        <div>
+          <h2>Weekly</h2>
+          <p class="panel-sub">Resets Wednesday at 07:00 UTC</p>
+        </div>
+        <div class="progress" data-progress-for="weekly">
+          <span class="progress-text">0 / 0</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+      </div>
+      <ul class="checklist" id="weekly-list"></ul>
+      <form class="add-form" data-add="weekly">
+        <input type="text" name="label" placeholder="Add a weekly task…" maxlength="120" required />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section id="shops" class="panel" data-period="weekly">
+      <div class="panel-head">
+        <div>
+          <h2>Buy &amp; Craft</h2>
+          <p class="panel-sub">Shop limits and weekly crafts — clears with the weekly reset</p>
+        </div>
+        <div class="progress" data-progress-for="shops">
+          <span class="progress-text">0 / 0</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+        </div>
+      </div>
+      <ul class="checklist" id="shops-list"></ul>
+      <form class="add-form" data-add="shops">
+        <input type="text" name="label" placeholder="Add something to buy or craft…" maxlength="120" required />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section id="notes" class="panel panel-notes">
+      <div class="panel-head">
+        <div>
+          <h2>Notes</h2>
+          <p class="panel-sub">Persists across resets — goals, IL targets, raid times</p>
+        </div>
+      </div>
+      <textarea id="notes-field" rows="6" placeholder="Write anything useful here…"></textarea>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>State saved in this browser. Daily and weekly checks clear automatically at Global reset (07:00 UTC).</p>
+    <button type="button" id="reset-all" class="ghost">Clear all checks</button>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
