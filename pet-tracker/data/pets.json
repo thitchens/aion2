@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "attribution": "Seeded from public unofficial AION 2 pet lists (e.g. Wikily / community guides). Unofficial and may drift from live game data. Override via Settings → custom catalog.",
+  "profiles": {
+    "global": {
+      "label": "Global",
+      "max_level": 3,
+      "soul_thresholds": [5, 25, 75]
+    },
+    "korea": {
+      "label": "Korea",
+      "max_level": 5,
+      "soul_thresholds": [5, 25, 75, 150, 250]
+    }
+  },
+  "pets": [
+    {
+      "id": "krall-laborer",
+      "name": "Krall Laborer",
+      "genus": "Cogni",
+      "source_mobs": ["Krall Laborer"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "forest-specter",
+      "name": "Forest Specter",
+      "genus": "Natura",
+      "source_mobs": ["Forest Specter"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Stamina +300",
+        "2": "Stamina +600, Critical Hit Resist +1",
+        "3": "Stamina +900, Critical Hit Resist +2, AGI +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "fossa",
+      "name": "Fossa",
+      "genus": "Fera",
+      "source_mobs": ["Fossa"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "klaw",
+      "name": "Klaw",
+      "genus": "Cogni",
+      "source_mobs": ["Klaw"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "sparkie",
+      "name": "Sparkie",
+      "genus": "Fera",
+      "source_mobs": ["Sparkie"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "potcrab",
+      "name": "Potcrab",
+      "genus": "Fera",
+      "source_mobs": ["Potcrab"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "baby-odyle-spider",
+      "name": "Baby Odyle Spider",
+      "genus": "Fera",
+      "source_mobs": ["Baby Odyle Spider"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "manduri-fighter",
+      "name": "Manduri Fighter",
+      "genus": "Cogni",
+      "source_mobs": ["Manduri Fighter", "Wandering Manduri Fighter"],
+      "source_level": 27,
+      "zone": "Pilgrim's Ridge, Verteron",
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": "Example Source entry from community guides."
+    },
+    {
+      "id": "elite-manduri-fighter",
+      "name": "Elite Manduri Fighter",
+      "genus": "Cogni",
+      "source_mobs": ["Elite Manduri Fighter", "Wandering Manduri Fighter"],
+      "source_level": 27,
+      "zone": "Pilgrim's Ridge, Verteron",
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "skyray",
+      "name": "Skyray",
+      "genus": "Fera",
+      "source_mobs": ["Skyray"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "fungie",
+      "name": "Fungie",
+      "genus": "Natura",
+      "source_mobs": ["Fungie"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Stamina +300",
+        "2": "Stamina +600, Critical Hit Resist +1",
+        "3": "Stamina +900, Critical Hit Resist +2, AGI +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "swarm",
+      "name": "Swarm",
+      "genus": "Varian",
+      "source_mobs": ["Swarm"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount sprint cost −10",
+        "2": "Mount sprint cost −20, Evasion +1",
+        "3": "Mount sprint cost −30, Evasion +2, CON +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "drakan-guard-dog",
+      "name": "Drakan Guard Dog",
+      "genus": "Fera",
+      "source_mobs": ["Drakan Guard Dog"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "kailin",
+      "name": "Kailin",
+      "genus": "Fera",
+      "source_mobs": ["Kailin"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "slink",
+      "name": "Slink",
+      "genus": "Fera",
+      "source_mobs": ["Slink"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "krall-warshaman",
+      "name": "Krall Warshaman",
+      "genus": "Cogni",
+      "source_mobs": ["Krall Warshaman"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "varg-berserker",
+      "name": "Varg Berserker",
+      "genus": "Cogni",
+      "source_mobs": ["Varg Berserker"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "ashen-spider",
+      "name": "Ashen Spider",
+      "genus": "Fera",
+      "source_mobs": ["Ashen Spider"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "krall-warrior",
+      "name": "Krall Warrior",
+      "genus": "Cogni",
+      "source_mobs": ["Krall Warrior"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "withered-agrint",
+      "name": "Withered Agrint",
+      "genus": "Natura",
+      "source_mobs": ["Withered Agrint"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Stamina +300",
+        "2": "Stamina +600, Critical Hit Resist +1",
+        "3": "Stamina +900, Critical Hit Resist +2, AGI +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "klaw-scout",
+      "name": "Klaw Scout",
+      "genus": "Cogni",
+      "source_mobs": ["Klaw Scout"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "HP +10",
+        "2": "HP +20, Critical Hit +1",
+        "3": "HP +30, Critical Hit +2, Might +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "konutin-worker",
+      "name": "Konutin Worker",
+      "genus": "Natura",
+      "source_mobs": ["Konutin Worker"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Stamina +300",
+        "2": "Stamina +600, Critical Hit Resist +1",
+        "3": "Stamina +900, Critical Hit Resist +2, AGI +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "giant-sparkie",
+      "name": "Giant Sparkie",
+      "genus": "Fera",
+      "source_mobs": ["Giant Sparkie"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "ursus",
+      "name": "Ursus",
+      "genus": "Fera",
+      "source_mobs": ["Ursus"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    },
+    {
+      "id": "cave-bat",
+      "name": "Cave Bat",
+      "genus": "Fera",
+      "source_mobs": ["Cave Bat"],
+      "source_level": null,
+      "zone": null,
+      "owned_effects": {
+        "1": "Mount speed +1",
+        "2": "Mount speed +2, Accuracy +1",
+        "3": "Mount speed +3, Accuracy +2, DEX +1"
+      },
+      "notes": ""
+    }
+  ]
+}

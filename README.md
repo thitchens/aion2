@@ -1,36 +1,18 @@
-# AION 2 — Flight Log
+# aion2
 
-A lightweight GitHub Pages checklist for AION 2 dailies, weeklies, and shop/craft limits.
+Unofficial helper tools for **AION 2**. Two separate products live in this repo:
 
-Checks are stored in **localStorage** in your browser. They clear automatically when the Global server resets:
-
-| Period | Reset |
+| Folder | What it is |
 | --- | --- |
-| Daily | Every day at **07:00 UTC** |
-| Weekly (and Buy & Craft) | **Wednesday** at **07:00 UTC** |
+| [`flight-log/`](flight-log/) | Browser checklist for dailies, weeklies, and shop/craft limits (GitHub Pages) |
+| [`pet-tracker/`](pet-tracker/) | Windows app: OCR the target nameplate → show associated pet + your soul progress |
 
-Notes persist across resets.
+They do not share runtime code. Prefer borderless windowed + English UI when using the pet tracker.
 
-## Preview locally
+## GitHub Pages
 
-Open `index.html` in a browser, or serve the folder:
+Point Pages at the **`/flight-log`** folder on `main`. See [`flight-log/README.md`](flight-log/README.md).
 
-```bash
-python3 -m http.server 8080
-```
+## Pet tracker
 
-Then visit `http://localhost:8080`.
-
-## Publish on GitHub Pages
-
-1. Create a GitHub repo and push this project.
-2. **Settings → Pages → Build and deployment**
-3. Source: **Deploy from a branch**
-4. Branch: `main` (or `master`), folder: `/ (root)`
-5. Save — the site will be at `https://<user>.github.io/<repo>/`
-
-If the repo is named `<user>.github.io`, it will be available at the root of that domain.
-
-## Custom tasks
-
-Use **Add** under each section for personal tasks. Custom items can be removed with ✕. Built-in tasks stay in the list so you can uncheck them after the next reset.
+See [`pet-tracker/README.md`](pet-tracker/README.md). Build on Windows (`npm run tauri build`). **OCR only — never memory, hooks, or packets** (also in [`AGENTS.md`](AGENTS.md)).

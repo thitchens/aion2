@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AION 2 Pet Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="/main.js" defer></script>
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <p class="eyebrow">AION 2</p>
+        <h1>Pet Tracker</h1>
+      </div>
+      <p class="guard">OCR only — never reads game memory</p>
+    </header>
+
+    <nav class="tabs" aria-label="Sections">
+      <button type="button" class="tab active" data-tab="track">Track</button>
+      <button type="button" class="tab" data-tab="import">Import</button>
+      <button type="button" class="tab" data-tab="settings">Settings</button>
+      <button type="button" class="tab" data-tab="progress">Progress</button>
+    </nav>
+
+    <main>
+      <section id="tab-track" class="panel active">
+        <h2>Live lookup</h2>
+        <p class="hint">
+          Calibrate the nameplate region, then press the hotkey in-game (default
+          <kbd>Ctrl+Shift+P</kbd>) or test below.
+        </p>
+        <div class="row">
+          <button type="button" id="btn-calibrate">Draw nameplate region</button>
+          <button type="button" id="btn-test-ocr">Test OCR now</button>
+          <button type="button" id="btn-hotkey-lookup">Lookup + open popup</button>
+        </div>
+        <label class="field">
+          <span>Manual search (no capture)</span>
+          <div class="row">
+            <input id="manual-query" type="text" placeholder="Mob or pet name…" />
+            <button type="button" id="btn-manual">Search</button>
+          </div>
+        </label>
+        <pre id="track-output" class="output" aria-live="polite">Ready.</pre>
+      </section>
+
+      <section id="tab-import" class="panel">
+        <h2>Import from Pets screenshot</h2>
+        <p class="hint">
+          v1: pick a screenshot of the Pets UI. OCR merges recognized pets into
+          local progress. Live Pets-page region OCR comes later.
+        </p>
+        <button type="button" id="btn-import">Choose screenshot…</button>
+        <pre id="import-output" class="output" aria-live="polite"></pre>
+      </section>
+
+      <section id="tab-settings" class="panel">
+        <h2>Settings</h2>
+        <form id="settings-form" class="stack">
+          <label class="field">
+            <span>Hotkey</span>
+            <input name="hotkey" type="text" />
+          </label>
+          <label class="field">
+            <span>Region profile</span>
+            <select name="region_profile">
+              <option value="global">Global (max Lv 3)</option>
+              <option value="korea">Korea (max Lv 5)</option>
+            </select>
+          </label>
+          <fieldset class="region-fields">
+            <legend>Saved OCR region (screen pixels)</legend>
+            <div class="row tight">
+              <label>X <input name="x" type="number" /></label>
+              <label>Y <input name="y" type="number" /></label>
+              <label>W <input name="width" type="number" min="1" /></label>
+              <label>H <input name="height" type="number" min="1" /></label>
+            </div>
+          </fieldset>
+          <label class="field">
+            <span>Catalog update URL (optional)</span>
+            <input name="catalog_update_url" type="url" placeholder="https://…/pets.json" />
+          </label>
+          <label class="check">
+            <input name="use_custom_catalog" type="checkbox" />
+            Use custom catalog file
+          </label>
+          <label class="field">
+            <span>Custom catalog path</span>
+            <div class="row">
+              <input name="custom_catalog_path" type="text" />
+              <button type="button" id="btn-pick-catalog">Browse…</button>
+            </div>
+          </label>
+          <div class="row">
+            <button type="submit">Save settings</button>
+            <button type="button" id="btn-refresh-catalog">Refresh catalog</button>
+          </div>
+        </form>
+        <p id="settings-status" class="status"></p>
+        <p class="meta">Data dir: <code id="data-dir">—</code></p>
+      </section>
+
+      <section id="tab-progress" class="panel">
+        <h2>Your pet progress</h2>
+        <p class="hint">Edit manually anytime. Import overwrites matching pets.</p>
+        <div id="progress-list" class="progress-list"></div>
+      </section>
+    </main>
+  </body>
+</html>
