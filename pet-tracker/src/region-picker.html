@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="picker-html">
   <head>
     <meta charset="UTF-8" />
     <title>Select region</title>
@@ -7,7 +7,21 @@
     <script type="module" src="/region-picker.js" defer></script>
   </head>
   <body class="picker-body">
-    <p class="picker-hint">Drag to select the target nameplate. Esc cancels.</p>
+    <div class="picker-bar" id="picker-bar">
+      <span class="picker-grip" title="Drag toolbar" aria-hidden="true">⠿</span>
+      <p class="picker-hint">
+        Drag toolbar to move it · empty space to draw · box to move · handles to
+        resize
+      </p>
+      <span class="picker-dims" id="dims">No region</span>
+      <div class="picker-actions">
+        <button type="button" class="picker-btn" id="btn-redraw">Redraw</button>
+        <button type="button" class="picker-btn picker-btn-primary" id="btn-save">
+          Save
+        </button>
+        <button type="button" class="picker-btn" id="btn-cancel">Cancel</button>
+      </div>
+    </div>
     <canvas id="overlay"></canvas>
   </body>
 </html>

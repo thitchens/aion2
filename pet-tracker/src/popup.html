@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="popup-html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,12 +8,20 @@
     <script type="module" src="/popup.js" defer></script>
   </head>
   <body class="popup-body">
-    <header class="popup-head" data-tauri-drag-region>
-      <strong>Pet Info</strong>
-      <span class="muted">drag to move</span>
-    </header>
-    <main id="popup-content" class="popup-content">
-      <p class="muted">Waiting for lookup…</p>
-    </main>
+    <div class="hud">
+      <header class="hud-head" data-tauri-drag-region>
+        <span class="hud-mark" aria-hidden="true"></span>
+        <div class="hud-titles" data-tauri-drag-region>
+          <strong id="hud-name">Pet Info</strong>
+          <span id="hud-sub" class="hud-sub">Waiting for lookup…</span>
+        </div>
+        <button type="button" id="btn-hide" class="hud-close" title="Hide" aria-label="Hide">
+          ×
+        </button>
+      </header>
+      <main id="popup-content" class="hud-body">
+        <p class="hud-idle">Waiting…</p>
+      </main>
+    </div>
   </body>
 </html>

@@ -5,7 +5,7 @@
 | Folder | Product |
 | --- | --- |
 | `flight-log/` | Static GitHub Pages checklist (dailies / weeklies). No game client integration. |
-| `pet-tracker/` | Windows Tauri app: OCR nameplate → pet lookup → local soul progress. |
+| `pet-tracker/` | Windows Tauri app: OCR nameplate → pet lookup → local pet level progress. |
 
 Treat them as separate products in one repo. Do not couple their runtimes.
 
@@ -24,3 +24,17 @@ Treat them as separate products in one repo. Do not couple their runtimes.
 - Any other non-OCR “live client” integration
 
 If a feature seems to require those, stop and propose an OCR- or data-file-based alternative instead.
+
+## Agent skills
+
+### Issue tracker
+
+Local markdown under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default role strings (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context (`CONTEXT.md` + `docs/adr/` at repo root). See `docs/agents/domain.md`.

@@ -27,11 +27,12 @@
       <section id="tab-track" class="panel active">
         <h2>Live lookup</h2>
         <p class="hint">
-          Calibrate the nameplate region, then press the hotkey in-game (default
-          <kbd>Ctrl+Shift+P</kbd>) or test below.
+          Calibrate the nameplate region, then press the lookup hotkey in-game
+          (default <kbd>Ctrl+Shift+P</kbd>) to show the popup — press again to
+          hide — or test below.
         </p>
         <div class="row">
-          <button type="button" id="btn-calibrate">Draw nameplate region</button>
+          <button type="button" id="btn-calibrate">Edit nameplate region</button>
           <button type="button" id="btn-test-ocr">Test OCR now</button>
           <button type="button" id="btn-hotkey-lookup">Lookup + open popup</button>
         </div>
@@ -46,10 +47,26 @@
       </section>
 
       <section id="tab-import" class="panel">
-        <h2>Import from Pets screenshot</h2>
+        <h2>Import pet levels</h2>
+
+        <h3>Pet Insight (live)</h3>
         <p class="hint">
-          v1: pick a screenshot of the Pets UI. OCR merges recognized pets into
-          local progress. Live Pets-page region OCR comes later.
+          Open a pet’s Insight panel in-game. Calibrate a box over the
+          <strong>pet name</strong> and the <strong>Lv. N (…)</strong> line under
+          it, then import while that UI is visible (hotkey default
+          <kbd>Ctrl+Shift+I</kbd>).
+        </p>
+        <div class="row">
+          <button type="button" id="btn-calibrate-insight">
+            Edit Pet Insight region
+          </button>
+          <button type="button" id="btn-import-insight">Import from region</button>
+        </div>
+
+        <h3>Pets list screenshot</h3>
+        <p class="hint">
+          Pick a screenshot of the Pets UI (or a Pet Insight crop). OCR merges
+          recognized pets into local progress.
         </p>
         <button type="button" id="btn-import">Choose screenshot…</button>
         <pre id="import-output" class="output" aria-live="polite"></pre>
@@ -59,8 +76,12 @@
         <h2>Settings</h2>
         <form id="settings-form" class="stack">
           <label class="field">
-            <span>Hotkey</span>
-            <input name="hotkey" type="text" />
+            <span>Lookup / close popup hotkey</span>
+            <input name="hotkey" type="text" placeholder="Ctrl+Shift+P" />
+          </label>
+          <label class="field">
+            <span>Import Insight hotkey</span>
+            <input name="hotkey_import" type="text" placeholder="Ctrl+Shift+I" />
           </label>
           <label class="field">
             <span>Region profile</span>
@@ -70,12 +91,21 @@
             </select>
           </label>
           <fieldset class="region-fields">
-            <legend>Saved OCR region (screen pixels)</legend>
+            <legend>Nameplate OCR region (screen pixels)</legend>
             <div class="row tight">
               <label>X <input name="x" type="number" /></label>
               <label>Y <input name="y" type="number" /></label>
               <label>W <input name="width" type="number" min="1" /></label>
               <label>H <input name="height" type="number" min="1" /></label>
+            </div>
+          </fieldset>
+          <fieldset class="region-fields">
+            <legend>Pet Insight OCR region (screen pixels)</legend>
+            <div class="row tight">
+              <label>X <input name="insight_x" type="number" /></label>
+              <label>Y <input name="insight_y" type="number" /></label>
+              <label>W <input name="insight_width" type="number" min="1" /></label>
+              <label>H <input name="insight_height" type="number" min="1" /></label>
             </div>
           </fieldset>
           <label class="field">
@@ -85,6 +115,14 @@
           <label class="check">
             <input name="use_custom_catalog" type="checkbox" />
             Use custom catalog file
+          </label>
+          <label class="check">
+            <input name="ocr_debug_timings" type="checkbox" />
+            Show OCR timings in Track output (and ocr-debug/last-run.txt)
+          </label>
+          <label class="check">
+            <input name="ocr_debug_images" type="checkbox" />
+            Write OCR debug images (raw/variants)
           </label>
           <label class="field">
             <span>Custom catalog path</span>
@@ -104,8 +142,69 @@
 
       <section id="tab-progress" class="panel">
         <h2>Your pet progress</h2>
-        <p class="hint">Edit manually anytime. Import overwrites matching pets.</p>
+        <p class="hint">
+          Edit manually anytime. Import overwrites matching pets. Click a pet for
+          zones and source mobs. Filter by genus, ownership, zone, pet level, or
+          search; sort the list as you like.
+        </p>
+        <div class="genus-filters" id="genus-filters" role="toolbar" aria-label="Genus filter"></div>
+        <div class="progress-controls">
+          <label class="field">
+            <span>Search</span>
+            <input id="progress-search" type="search" placeholder="Name, mob, zone, area…" />
+          </label>
+          <label class="field">
+            <span>Ownership</span>
+            <select id="progress-ownership">
+              <option value="all">All</option>
+              <option value="owned">Owned</option>
+              <option value="unowned">Unowned</option>
+              <option value="in-progress">In progress</option>
+              <option value="maxed">Max level</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Zone</span>
+            <select id="progress-zone">
+              <option value="all">All zones</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Pet level</span>
+            <div class="level-range">
+              <input id="progress-level-min" type="number" min="0" placeholder="Min" />
+              <span class="muted">–</span>
+              <input id="progress-level-max" type="number" min="0" placeholder="Max" />
+            </div>
+          </label>
+          <label class="field">
+            <span>Sort</span>
+            <select id="progress-sort">
+              <option value="genus-name">Genus, then name</option>
+              <option value="name-asc">Name A–Z</option>
+              <option value="name-desc">Name Z–A</option>
+              <option value="pet-level-desc">Pet level ↓</option>
+              <option value="pet-level-asc">Pet level ↑</option>
+              <option value="zone-asc">Zone A–Z</option>
+            </select>
+          </label>
+        </div>
+        <p class="meta" id="progress-count"></p>
         <div id="progress-list" class="progress-list"></div>
+        <dialog id="pet-detail" class="pet-detail">
+          <div class="pet-detail-head">
+            <div>
+              <h3 id="pet-detail-title">Pet</h3>
+              <p class="muted" id="pet-detail-sub"></p>
+            </div>
+            <form method="dialog">
+              <button type="submit" class="pet-detail-close" aria-label="Close">
+                Close
+              </button>
+            </form>
+          </div>
+          <div id="pet-detail-body" class="pet-detail-body"></div>
+        </dialog>
       </section>
     </main>
   </body>

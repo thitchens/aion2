@@ -48,9 +48,15 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0.15rem 0 0;
   font-weight: 650;
+}
+
+h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
 }
 
 .guard {
@@ -145,6 +151,7 @@ textarea {
 input[type="text"],
 input[type="number"],
 input[type="url"],
+input[type="search"],
 select {
   width: 100%;
   min-width: 0;
@@ -204,14 +211,78 @@ button:hover {
   font-size: 0.86rem;
 }
 
+.genus-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.progress-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 0.75rem 0.85rem;
+  margin: 0.35rem 0 0.5rem;
+  align-items: end;
+}
+
+.progress-controls .field:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 720px) {
+  .progress-controls .field:first-child {
+    grid-column: span 2;
+  }
+}
+
+.level-range {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.level-range input {
+  width: 100%;
+}
+
+.genus-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg0);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.genus-chip.active {
+  color: #1a1408;
+  background: linear-gradient(180deg, #d2b36d, var(--accent));
+  border-color: transparent;
+}
+
+.genus-heading {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 0.95rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .progress-list {
   display: grid;
   gap: 0.65rem;
+  margin-top: 0.75rem;
+  max-height: min(58vh, 640px);
+  overflow: auto;
+  padding-right: 0.25rem;
 }
 
 .progress-card {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: 1fr auto auto;
   gap: 0.5rem;
   align-items: center;
   background: var(--bg0);
@@ -220,8 +291,200 @@ button:hover {
   padding: 0.65rem 0.75rem;
 }
 
-.progress-card input {
-  width: 4.5rem;
+.progress-pet {
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.15rem 0.25rem 0.15rem 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  filter: none;
+}
+
+.progress-pet:hover strong {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.progress-pet:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pet-detail {
+  width: min(28rem, calc(100vw - 2rem));
+  max-height: min(80vh, 36rem);
+  margin: auto;
+  padding: 1rem 1.1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg1);
+  color: var(--ink);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+}
+
+.pet-detail::backdrop {
+  background: rgba(8, 12, 9, 0.62);
+}
+
+.pet-detail-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: start;
+  margin-bottom: 0.85rem;
+}
+
+.pet-detail-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.pet-detail-head .muted {
+  margin: 0.2rem 0 0;
+}
+
+.pet-detail-close {
+  flex-shrink: 0;
+}
+
+.pet-detail-body {
+  display: grid;
+  gap: 0.75rem;
+  overflow: auto;
+  max-height: min(60vh, 28rem);
+}
+
+.pet-detail-section {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.pet-detail-section h4 {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pet-detail-section ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.pet-detail-section li + li {
+  margin-top: 0.15rem;
+}
+
+.pet-detail-section p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.progress-field {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.progress-field > span:first-child {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+.num-stepper {
+  display: inline-grid;
+  grid-template-columns: 3.4rem auto;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg1);
+  overflow: hidden;
+}
+
+.num-stepper input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.4rem 0.45rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.num-stepper input[type="number"]::-webkit-outer-spin-button,
+.num-stepper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.num-stepper-btns {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border-left: 1px solid var(--line);
+  width: 1.45rem;
+}
+
+.num-step {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: rgba(196, 163, 90, 0.1);
+  color: var(--accent);
+  cursor: pointer;
+  position: relative;
+  min-height: 1.05rem;
+  filter: none;
+}
+
+.num-step + .num-step {
+  border-top: 1px solid var(--line);
+}
+
+.num-step::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 0.28rem solid transparent;
+  border-right: 0.28rem solid transparent;
+  transform: translate(-50%, -40%);
+}
+
+.num-step[data-step="1"]::before {
+  border-bottom: 0.32rem solid var(--accent);
+}
+
+.num-step[data-step="-1"]::before {
+  border-top: 0.32rem solid var(--accent);
+  transform: translate(-50%, -55%);
+}
+
+.num-step:hover {
+  background: rgba(196, 163, 90, 0.22);
+  filter: none;
+}
+
+.num-step:active {
+  background: rgba(196, 163, 90, 0.32);
 }
 
 kbd {
@@ -232,77 +495,313 @@ kbd {
   padding: 0.05rem 0.35rem;
 }
 
+/* In-game HUD popup — Atreia night glass, gold rim, compact over the world. */
+html.popup-html {
+  background: transparent;
+  min-height: 100%;
+  color: #ebe4d4;
+}
+
 .popup-body {
-  padding: 0;
-  background: var(--bg1);
-  min-height: 100vh;
+  margin: 0;
+  padding: 8px;
+  background: transparent;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  overflow: hidden;
 }
 
-.popup-head {
+.hud {
+  --void: #0a1018;
+  --panel: rgba(10, 16, 24, 0.88);
+  --gold: #d4b56a;
+  --gold-dim: rgba(212, 181, 106, 0.35);
+  --ink: #ebe4d4;
+  --muted: #8b9aab;
+  --glow: #6fa8b8;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid var(--line);
-  background: var(--bg2);
-  cursor: grab;
+  flex-direction: column;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(28, 42, 58, 0.55) 0%, transparent 42%),
+    var(--panel);
+  box-shadow:
+    inset 0 0 0 1px rgba(212, 181, 106, 0.12),
+    0 12px 28px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  animation: hud-in 180ms ease-out;
 }
 
-.popup-content {
-  padding: 0.9rem 1rem 1.2rem;
+@keyframes hud-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.popup-content h2 {
-  margin-bottom: 0.25rem;
+@media (prefers-reduced-motion: reduce) {
+  .hud {
+    animation: none;
+  }
 }
 
-.popup-content dl {
+.hud-head {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.35rem 0.75rem;
-  margin: 0.85rem 0;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.55rem;
+  align-items: start;
+  padding: 0.65rem 0.55rem 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--gold-dim);
+  cursor: grab;
+  user-select: none;
 }
 
-.popup-content dt {
+.hud-mark {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.4rem;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(212, 181, 106, 0.7);
+}
+
+.hud-titles {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hud-titles strong {
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-close {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hud-close:hover {
+  color: var(--ink);
+  border-color: var(--gold-dim);
+  background: rgba(212, 181, 106, 0.08);
+}
+
+.hud-body {
+  padding: 0.55rem 0.7rem 0.7rem;
+}
+
+.hud-idle {
+  margin: 0;
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
-.suggestions {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
+.hud-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
 }
 
-.suggestions button {
+.hud-metrics > div {
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(111, 168, 184, 0.18);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.hud-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.hud-metrics strong {
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hud-next {
+  margin-bottom: 0.55rem;
+}
+
+.hud-pill {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.75rem;
+  background: rgba(212, 181, 106, 0.08);
+}
+
+.hud-pill.max {
+  border-color: rgba(111, 168, 184, 0.4);
+  color: var(--glow);
+  background: rgba(111, 168, 184, 0.1);
+}
+
+.hud-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0.45rem 0 0;
+}
+
+.hud-suggestions button {
   width: 100%;
   text-align: left;
-  margin-bottom: 0.35rem;
-  background: var(--bg0);
+  margin: 0 0 0.3rem;
+  padding: 0.35rem 0.5rem;
+  background: rgba(0, 0, 0, 0.25);
   color: var(--ink);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(212, 181, 106, 0.2);
+  border-radius: 2px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hud-suggestions button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Region picker: keep html/body clear so the game shows through the transparent window. */
+html.picker-html {
+  background: transparent;
+  min-height: 100%;
 }
 
 .picker-body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: rgba(8, 12, 9, 0.35);
+  background: transparent;
   cursor: crosshair;
   user-select: none;
 }
 
-.picker-hint {
+.picker-bar {
   position: fixed;
-  top: 1rem;
+  top: 0.85rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  margin: 0;
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(15, 20, 16, 0.85);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem 0.75rem;
+  max-width: min(920px, calc(100vw - 1.5rem));
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(15, 20, 16, 0.9);
   border: 1px solid var(--line);
-  pointer-events: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.picker-bar.picker-bar-placed {
+  transform: none;
+}
+
+.picker-bar.picker-bar-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.picker-grip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  cursor: inherit;
+}
+
+.picker-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: inherit;
+}
+
+.picker-dims {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--accent);
+  min-width: 11rem;
+  text-align: center;
+  cursor: inherit;
+}
+
+.picker-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.picker-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(36, 48, 40, 0.9);
+  color: var(--ink);
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.picker-btn:hover {
+  border-color: rgba(196, 163, 90, 0.55);
+}
+
+.picker-btn-primary {
+  background: rgba(196, 163, 90, 0.22);
+  border-color: rgba(196, 163, 90, 0.65);
+  color: #f0e2c0;
+}
+
+.picker-btn-primary:hover {
+  background: rgba(196, 163, 90, 0.35);
 }
 
 #overlay {

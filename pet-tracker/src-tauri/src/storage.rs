@@ -70,15 +70,19 @@ pub fn load_catalog(settings: &Settings) -> Result<Catalog, String> {
         return serde_json::from_str(&raw).map_err(|e| format!("Custom catalog invalid: {e}"));
     }
 
+    let bundled = bundled_catalog()?;
     let cache = cached_catalog_path()?;
     if cache.exists() {
         let raw = fs::read_to_string(&cache).map_err(|e| e.to_string())?;
-        if let Ok(catalog) = serde_json::from_str::<Catalog>(&raw) {
-            return Ok(catalog);
+        if let Ok(cached) = serde_json::from_str::<Catalog>(&raw) {
+            // Prefer a URL-updated cache only when it is at least as new as the bundle.
+            if cached.version >= bundled.version {
+                return Ok(cached);
+            }
         }
     }
 
-    bundled_catalog()
+    Ok(bundled)
 }
 
 pub fn refresh_catalog_from_url(url: &str) -> Result<Catalog, String> {
